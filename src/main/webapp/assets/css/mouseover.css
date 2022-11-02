@@ -1,0 +1,3 @@
+.my_img {    filter: brightness(1);}
+
+.my_img:hover {    filter: brightness(0.5);}

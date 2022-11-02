@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/signup.css">
+</head>
+<body>
+    <div clsss="background">
+        <div class="signup-container">
+            <form action="./index.html" method="post" enctype="multipart/form-data" class="form-signup" id="myform">
+
+                <header>
+                    <div>
+                        <div><img src="./assets/images/logo.png" class="main-logo"></a></div>
+                        <div id="image-show" class="signup-input-userpicture"><img src="" alt=""></div>
+                    </div>
+                    <div class="signup-pic-button">
+                        <label for="signup-pic-chooseFile">
+                            프로필 사진을 선택하세요
+                        </label>
+                    </div>
+                    <input type="file" id="signup-pic-chooseFile" name="signup-pic-chooseFile" accept="image/*" onchange="loadFile(this)">
+                </header>
+                    
+
+
+                <label for="signup-input-userid" class="signup__label">
+                    Userid
+                </label>
+                <input id="signup-input-userid" class="signup__input" type="text"  value="아이디를 입력하세요"/>
+
+                <label for="signup-input-password" class="signup__label">
+                    Password
+                </label>
+                <input id="signup-input-password" class="signup__input" type="password" value="비밀번호를 입력하세요"/>
+
+                <label for="signup-input-passwordchk" class="signup__label">
+                    Password check
+                </label>
+                <input id="signup-input-passwordchk" class="signup__input" type="password" value="비밀번호를 입력하세요"/>
+
+                <label for="signup-input-username" class="signup__label">
+                    Username
+                </label>
+                <input id="signup-input-username" class="signup__input" type="text" value="이름을 입력하세요"/>
+
+                <label for="signup-input-useremail" class="signup__label">
+                    Email
+                </label>
+                <input id="signup-input-useremail" class="signup__input" type="text" value="이메일을 입력하세요"/>
+
+                <label for="signup-input-userphone" class="signup__label">
+                    Phone
+                </label>
+                <input id="signup-input-userphone" class="signup__input" type="text" value="핸드폰 번호를 입력하세요(010-0000-0000)"/>
+
+                <hr>
+                <button class="signup__submit" type="submit">회원가입</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    function loadFile(input) {
+        var file = input.files[0];	//선택된 파일 가져오기
+
+        //미리 만들어 놓은 div에 text(파일 이름) 추가
+        var name = document.getElementById('fileName');
+        name.textContent = file.name;
+
+        //새로운 이미지 div 추가
+        var newImage = document.createElement("img");
+        newImage.setAttribute("class", 'img');
+
+        //이미지 source 가져오기
+        newImage.src = URL.createObjectURL(file);   
+
+        newImage.style.width = "70%";
+        newImage.style.height = "70%";
+        // newImage.style.visibility = "hidden";   //버튼을 누르기 전까지는 이미지를 숨긴다
+        newImage.style.objectFit = "contain";
+
+        //이미지를 image-show div에 추가
+        var container = document.getElementById('image-show');
+        container.appendChild(newImage);
+    };
+
+    let userid = $('#signup-input-userid');
+    let userpw = $('#signup-input-password');
+    let userpwchk = $('#signup-input-passwordchk');
+    let username = $('#signup-input-username');
+    let useremail = $('#signup-input-useremail');
+    let userphone = $('#signup-input-userphone');
+
+    userid.focus(function(){
+        if(userid.val() == '아이디를 입력하세요'){
+            userid.val('')
+        }
+        userid.css('background-color', 'skyblue');
+    })
+    
+    userid.blur(function(){
+        userid.css('background-color', 'rgb(65, 52, 114)');
+        
+        
+        if(userid.val() == ''){
+            userid.val('아이디를 입력하세요')
+            userid.css('background-color', '');
+        }
+    })
+    
+    userpw.focus(function(){
+        if(userpw.val() == '비밀번호를 입력하세요'){
+            userpw.val('')
+        }
+        userpw.css('background-color', 'skyblue');
+    })
+    
+    userpw.blur(function(){
+        userpw.css('background-color', 'rgb(65, 52, 114)');
+        
+        if(userpw.val() == ''){
+            userpw.val('비밀번호를 입력하세요')
+            userpw.css('background-color', '');
+        }
+    })
+
+    userpwchk.focus(function(){
+        if(userpwchk.val() == '비밀번호를 입력하세요'){
+            userpwchk.val('')
+        }
+        userpwchk.css('background-color', 'skyblue');
+    })
+    
+    userpwchk.blur(function(){
+        userpwchk.css('background-color', 'rgb(65, 52, 114)');
+
+        if(userpwchk.val() == ''){
+            userpwchk.val('비밀번호를 입력하세요')
+            userpwchk.css('background-color', '');
+        }
+    })
+
+    username.focus(function(){
+        if(username.val() == '이름을 입력하세요'){
+            username.val('')
+        }
+        username.css('background-color', 'skyblue');
+    })
+    
+    username.blur(function(){
+        username.css('background-color', 'rgb(65, 52, 114)');
+        
+        if(username.val() == ''){
+            username.val('이름을 입력하세요')
+            username.css('background-color', '');
+        }
+    })
+
+    useremail.focus(function(){
+        if(useremail.val() == '이메일을 입력하세요'){
+            useremail.val('')
+        }
+        useremail.css('background-color', 'skyblue');
+    })
+    
+    useremail.blur(function(){
+        useremail.css('background-color', 'rgb(65, 52, 114)');
+        
+        if(useremail.val() == ''){
+            useremail.val('이메일을 입력하세요')
+            useremail.css('background-color', '');
+        }
+    })
+  
+    userphone.focus(function(){
+        if(userphone.val() == '핸드폰 번호를 입력하세요(010-0000-0000)'){
+            userphone.val('')
+        }
+        userphone.css('background-color', 'skyblue');
+    })
+    
+    userphone.blur(function(){
+        userphone.css('background-color', 'rgb(65, 52, 114)');
+        
+        if(userphone.val() == ''){
+            userphone.val('핸드폰 번호를 입력하세요(010-0000-0000)')
+            userphone.css('background-color', '');
+        }
+    })
+
+    $('#myform').submit(function(e){
+        e.preventDefault();
+        let id_chk = /^[a-zA-Z0-9]*$/;
+        let password_chk = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+        let name_chk = /^[ㄱ-ㅎ가-힣]*$/;
+        let email_chk = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+        let phone_chk = /^\d{3}-\d{3,4}-\d{4}$/;
+
+        
+        let id_value = $('#signup-input-userid').val();
+        if(!id_chk.test(id_value)){
+            alert('아이디는 숫자와 영어로 입력해주세요');
+            $('#signup-input-userid').val('');
+            $('#signup-input-userid').focus();
+            return false;
+        }
+
+        let password_value = $('#signup-input-password').val();
+        if(!password_chk.test(password_value)){
+            alert('비밀번호는 소문자, 대문자, 숫자, 특수문자를 포함하는 8~15 자리로 입력해주세요');
+            $('#signup-input-password').val('');
+            $('#signup-input-password').focus();
+            return false;
+        }
+        
+        let password_valuechk = $('#signup-input-passwordchk').val();
+        if(password_value != password_valuechk){
+            alert('비밀번호가 동일하지 않습니다');
+            $('#signup-input-password').val('');
+            $('#signup-input-password').focus();
+            return false;
+        }
+
+        let name_value = $('#signup-input-username').val();
+        if(!name_chk.test(name_value)){
+            alert('이름은 한글로만 입력해주세요');
+            $('#signup-input-username').val('');
+            $('#signup-input-username').focus();
+            return false;
+        }
+
+        let email_value = $('#signup-input-useremail').val();
+        if(!email_chk.test(email_value)){
+            alert('이메일 형식에 맞춰 입력해주세요');
+            $('#signup-input-useremail').val('');
+            $('#signup-input-useremail').focus();
+            return false;
+        }
+
+        let phone_value = $('#signup-input-userphone').val();
+        if(!phone_chk.test(phone_value)){
+            alert('핸드폰 번호 형식에 맞춰 입력해주세요(010-0000-0000)');
+            $('#signup-input-userphone').val('');
+            $('#signup-input-userphone').focus();
+            return false;
+        }
+        
+        
+
+        alert('반갑습니다!');
+        
+        location.href='index.html';
+
+    })
+</script>
+</html>
